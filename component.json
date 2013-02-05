@@ -6,7 +6,9 @@
   "keywords": ["MVC", "view"],
   "scripts": ["index.js"],
   "dependencies": {
-    "apily/emitter": "*"
+    "apily/emitter": "*",
+    "apily/guid": "*",
+    "component/domify": "*
   },
   "development": {
     "component/assert": "*"
