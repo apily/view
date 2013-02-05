@@ -3,7 +3,7 @@
  * view
  * View component
  *
- * @copyright 2012 Enrico Marino and Federico Spini
+ * @copyright 2013 Enrico Marino and Federico Spini
  * @license MIT
  */ 
 
@@ -18,6 +18,7 @@ module.exports = View;
  */
 
 var Emitter = require('emitter');
+var guid = require('guid');
 
 /**
  * View
@@ -33,6 +34,7 @@ function View(options) {
     return new View(options);
   }
   options = options || {};
+  this.id = guid('view_');
   this.el = options.el || document.createElement('div');
 }
 
@@ -42,3 +44,14 @@ function View(options) {
 
 View.prototype = Object.create(Emitter.prototype);
 View.prototype.constructor = View;
+
+/**
+ * @method render
+ * 
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.render = function () {
+  return this;  
+};
