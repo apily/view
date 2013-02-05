@@ -18,6 +18,7 @@ module.exports = View;
  */
 
 var Emitter = require('emitter');
+var domify = require('domify');
 var guid = require('guid');
 
 /**
@@ -33,9 +34,10 @@ function View(options) {
   if (!(this instanceof View)) {
     return new View(options);
   }
+  
   options = options || {};
-  this.id = guid('view_');
-  this.el = options.el || document.createElement('div');
+  this.id = guid('view');
+  this.el = domify(this.template)[0];
 }
 
 /**
@@ -44,6 +46,12 @@ function View(options) {
 
 View.prototype = Object.create(Emitter.prototype);
 View.prototype.constructor = View;
+
+/**
+ * @property template
+ */
+
+View.prototype.template = '<div></div>';
 
 /**
  * @method render
