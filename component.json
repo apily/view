@@ -8,7 +8,7 @@
   "dependencies": {
     "apily/emitter": "*",
     "apily/guid": "*",
-    "component/domify": "*
+    "component/domify": "*"
   },
   "development": {
     "component/assert": "*"
