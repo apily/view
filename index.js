@@ -69,3 +69,16 @@ View.prototype.template = '<div></div>';
 View.prototype.render = function () {
   return this;  
 };
+
+/**
+ * @method append_to
+ * 
+ * @param {Element} container container
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.append_to = function (container) {
+  container.appendChild(this.el); 
+  this.container = container;
+};
