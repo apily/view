@@ -1,4 +1,3 @@
-
 /**
  * view
  * View component
@@ -26,7 +25,7 @@ var guid = require('guid');
  * Create a view.
  * 
  * @param {Object} options
- *   @param {Element} [options.el] element
+ *   @param {Element} [options.container] element
  * @return {ViewModel} a viewmodel
  */
 
@@ -35,9 +34,16 @@ function View(options) {
     return new View(options);
   }
   
-  options = options || {};
+  var options = options || {};
+  var container = options.container;
+  
   this.id = guid('view');
   this.el = domify(this.template)[0];
+  
+  if (container) {
+    this.container = container;
+    this.container.appendChild(this.el);
+  }
 }
 
 /**
