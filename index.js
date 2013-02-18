@@ -19,6 +19,8 @@ module.exports = View;
 var Emitter = require('emitter');
 var domify = require('domify');
 var guid = require('guid');
+var selectors = require('selectors-map');
+var delegates = require('delegate-manager');
 
 /**
  * View
@@ -39,6 +41,9 @@ function View(options) {
   
   this.id = guid('view');
   this.el = domify(this.template)[0];
+  this.elements = selectors(this.el, this.elements);
+  this.delegates = delegates(this.el, this);
+  this.delegates.bind_all(this.events);
   
   if (container) {
     this.container = container;
@@ -54,10 +59,22 @@ View.prototype = Object.create(Emitter.prototype);
 View.prototype.constructor = View;
 
 /**
- * @property template
+ * @property {String} template
  */
 
 View.prototype.template = '<div></div>';
+
+/**
+ * @property {Object} elements
+ */
+
+View.prototype.elements = {};
+
+/**
+ * @property {Object} events
+ */
+
+View.prototype.events = {};
 
 /**
  * @method render
