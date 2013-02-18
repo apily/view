@@ -72,7 +72,7 @@ View.prototype.render = function () {
 
 /**
  * @method into
- *   append this view into `container`
+ * @description append this view into `container`
  * @param {Element} container container
  * @return {View} this for chaining
  * @api public
@@ -82,3 +82,15 @@ View.prototype.into = function (container) {
   container.appendChild(this.el); 
   this.container = container;
 };
+
+/**
+ * @method show
+ * @description show this view
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.show = function () {
+  this.el.style.display = 'block';
+};
+
