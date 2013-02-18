@@ -6,8 +6,10 @@
   "keywords": ["MVC", "view"],
   "scripts": ["index.js"],
   "dependencies": {
-    "apily/emitter": "*",
     "apily/guid": "*",
+    "apily/emitter": "*",
+    "apily/selectors-map": "*",
+    "apily/delegate-manager": "*",
     "component/domify": "*"
   },
   "development": {
