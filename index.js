@@ -71,14 +71,14 @@ View.prototype.render = function () {
 };
 
 /**
- * @method append_to
- * 
+ * @method into
+ *   append this view into `container`
  * @param {Element} container container
  * @return {View} this for chaining
  * @api public
  */
 
-View.prototype.append_to = function (container) {
+View.prototype.into = function (container) {
   container.appendChild(this.el); 
   this.container = container;
 };
