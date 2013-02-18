@@ -94,3 +94,13 @@ View.prototype.show = function () {
   this.el.style.display = 'block';
 };
 
+/**
+ * @method hide
+ * @description hide this view
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.hide = function () {
+  this.el.style.display = 'none';
+};
