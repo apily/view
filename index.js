@@ -1,3 +1,4 @@
+
 /**
  * view
  * View component
@@ -44,6 +45,7 @@ function View(options) {
   this.elements = selectors(this.el, this.elements);
   this.delegates = delegates(this.el, this);
   this.delegates.bind_all(this.events);
+  this.listeners = [];
   
   if (container) {
     this.container = container;
@@ -85,6 +87,28 @@ View.prototype.events = {};
 
 View.prototype.render = function () {
   return this;  
+};
+
+/**
+ * listen
+ * 
+ * @api public
+ */
+
+View.prototype.listen = function (emitter, event, method) {
+  var that = this;
+  var listeners = this.listeners;
+  var method = this[method];
+  var fn = function () {
+    return method.apply(that, arguments);
+  };
+
+  emitter.on(event, fn);
+
+  listeners[event] = listeners[event] || {};
+  listeners[event][method] = fn;
+
+  return this;
 };
 
 /**
