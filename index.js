@@ -89,6 +89,31 @@ View.prototype.render = function () {
 };
 
 /**
+ * delegate
+ * 
+ * @param {String} event event name
+ * @param {String} method method name
+ * @api public
+ */
+
+View.prototype.delegate = function (event, method) {
+  this.delegates.bind(event, method);
+  return this;
+};
+
+/**
+ * delegate_all
+ * 
+ * @param {Object} events events map
+ * @api public
+ */
+
+View.prototype.delegate_all = function (events) {
+  this.delegates.bind_all(events);
+  return this;
+};
+
+/**
  * listen
  * 
  * @param {Emitter} emitter emitter
