@@ -1,4 +1,3 @@
-
 /**
  * view
  * View component
@@ -92,22 +91,36 @@ View.prototype.render = function () {
 /**
  * listen
  * 
+ * @param {Emitter} emitter emitter
+ * @param {String} event event name
+ * @param {String} method method name
  * @api public
  */
 
 View.prototype.listen = function (emitter, event, method) {
-  var that = this;
-  var listeners = this.listeners;
-  var method = this[method];
-  var fn = function () {
-    return method.apply(that, arguments);
-  };
+  if (typeof event === 'object') {
+    this.listen_all(emitter, event);
+    return this;
+  }
+  emitter.on(event, this[method], this);
+  return this;
+};
 
-  emitter.on(event, fn);
+/**
+ * listen_all
+ * 
+ * @param {Emitter} emitter emitter
+ * @param {Object} events events map
+ *   @key {String} event event name
+ *   @value {String} method method name
+ * @api public
+ */
 
-  listeners[event] = listeners[event] || {};
-  listeners[event][method] = fn;
-
+View.prototype.listen_all = function (emitter, events) {
+  var event;
+  for (event in events) {
+    this.listen(emitter, event, events[event]);    
+  }
   return this;
 };
 
