@@ -125,6 +125,23 @@ View.prototype.listen_all = function (emitter, events) {
 };
 
 /**
+ * unlisten
+ * 
+ * @param {Emitter} emitter emitter
+ * @param {String} event event name
+ * @param {String} method method name
+ * @api public
+ */
+
+View.prototype.unlisten = function (emitter, event, method) {
+  if (typeof event === 'object') {
+    this.listen_all(emitter, event);
+    return this;
+  }
+  emitter.off(event, this[method]);
+};
+
+/**
  * @method into
  * @description append this view into `container`
  * @param {Element} container container
