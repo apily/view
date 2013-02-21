@@ -93,6 +93,7 @@ View.prototype.render = function () {
  * 
  * @param {String} event event name
  * @param {String} method method name
+ * @return {View} this for chaining
  * @api public
  */
 
@@ -105,6 +106,7 @@ View.prototype.delegate = function (event, method) {
  * delegate_all
  * 
  * @param {Object} events events map
+ * @return {View} this for chaining
  * @api public
  */
 
@@ -114,11 +116,39 @@ View.prototype.delegate_all = function (events) {
 };
 
 /**
+ * undelegate
+ * 
+ * @param {String} event event name
+ * @param {String} method method name
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.undelegate = function (event, method) {
+  this.delegates.unbind(event, method);  
+  return this;
+};
+
+/**
+ * undelegate_all
+ * 
+ * @param {String} event event name
+ * @return {View} this for chaining
+ * @api public
+ */
+
+View.prototype.undelegate_all = function (event) {
+  this.delegates.unbind_all_of(event);  
+  return this;
+};
+
+/**
  * listen
  * 
  * @param {Emitter} emitter emitter
  * @param {String} event event name
  * @param {String} method method name
+ * @return {View} this for chaining
  * @api public
  */
 
@@ -138,6 +168,7 @@ View.prototype.listen = function (emitter, event, method) {
  * @param {Object} events events map
  *   @key {String} event event name
  *   @value {String} method method name
+ * @return {View} this for chaining
  * @api public
  */
 
@@ -155,6 +186,7 @@ View.prototype.listen_all = function (emitter, events) {
  * @param {Emitter} emitter emitter
  * @param {String} event event name
  * @param {String} method method name
+ * @return {View} this for chaining
  * @api public
  */
 
@@ -173,6 +205,7 @@ View.prototype.unlisten = function (emitter, event, method) {
  * @param {Object} events events map
  *   @key {String} event event name
  *   @value {String} method method name
+ * @return {View} this for chaining
  * @api public
  */
 
