@@ -142,6 +142,24 @@ View.prototype.unlisten = function (emitter, event, method) {
 };
 
 /**
+ * unlisten_all
+ * 
+ * @param {Emitter} emitter emitter
+ * @param {Object} events events map
+ *   @key {String} event event name
+ *   @value {String} method method name
+ * @api public
+ */
+
+View.prototype.unlisten_all = function (emitter, events) {
+  var event;
+  for (event in events) {
+    this.unlisten(emitter, event, events[event]);    
+  }
+  return this;
+};
+
+/**
  * @method into
  * @description append this view into `container`
  * @param {Element} container container
