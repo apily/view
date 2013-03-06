@@ -228,6 +228,7 @@ View.prototype.unlisten_all = function (emitter, events) {
 View.prototype.into = function (container) {
   container.appendChild(this.el); 
   this.container = container;
+  return this;
 };
 
 /**
@@ -239,6 +240,7 @@ View.prototype.into = function (container) {
 
 View.prototype.show = function () {
   this.el.style.display = 'block';
+  return this;
 };
 
 /**
@@ -250,4 +252,5 @@ View.prototype.show = function () {
 
 View.prototype.hide = function () {
   this.el.style.display = 'none';
+  return this;
 };
