@@ -1,16 +1,12 @@
 {
   "name": "view",
   "repo": "apily/view",
-  "version": "0.0.1",
-  "description": "View component",
-  "keywords": ["MVC", "view"],
+  "version": "0.0.2",
+  "description": "view component",
+  "keywords": ["view", "element"],
   "scripts": ["index.js"],
   "dependencies": {
-    "apily/guid": "*",
-    "apily/emitter": "*",
-    "apily/selectors-map": "*",
-    "apily/delegate-manager": "*",
-    "component/domify": "*"
+    "enricomarino/element": "*"
   },
   "development": {
     "component/assert": "*"
