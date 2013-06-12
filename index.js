@@ -51,7 +51,7 @@ function create_view () {
    * use
    */
 
-  view.prototype.use = function (fn) {
+  view.use = function (fn) {
     fn(this);
     return this;
   };
